@@ -1,15 +1,13 @@
-import React from 'react';
-import './App.css';
-import RouteApp from "./route/RouteApp.jsx"
+import React from "react";
+import "./App.css";
+import RouteApp from "./route/RouteApp.jsx";
 
 function App() {
-	
-
-	return (
-		<>
-			<RouteApp/>
-		</>
-	);
+  return (
+    <>
+      <RouteApp />
+    </>
+  );
 }
 
 export default App;
