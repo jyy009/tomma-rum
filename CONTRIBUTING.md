@@ -2,8 +2,10 @@
 
 ## Pull Request Process
 
+- Pull from origin/main into your branch and resolve conflicts before the PR.
 - All changes must be submitted via pull request(PR).
 - At lease one approval from another team member is required before merging.
+- After approving the PR, delete the branch.
 
 ## Branch Naming
 
@@ -16,7 +18,10 @@
 ## Code Style
 
 - Follow the project’s ESLint and Prettier configurations.
-- Naming convention:
+- Use Default Export syntax
+- Naming conventions:
+  - functions: camelCase
+  - components: PascalCase
 
 ## Git Cheat Sheet
 
@@ -31,9 +36,9 @@
   // Example
   // git push origin main
 
-// Important!!
-// If you have set up your branch as your master branch you can use:
-// git push
+  // Important!!
+  // If you have set up your branch as your master branch you can use:
+  // git push
 
 - after merging branches, to get the latest updates on the main branch
   `git checkout main`
