@@ -17,7 +17,7 @@ export const routes=[
     element: <Layout><Projects/></Layout>,
 },
 {
-    path : "/project",
+    path : "/projects/:id",
     element: <Layout><Project/></Layout>,
 },
 {
