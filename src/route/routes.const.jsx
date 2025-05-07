@@ -9,7 +9,7 @@ const Booking = lazy(() => import('../views/booking/Booking.jsx'));
 
 export const routes=[
 {
-    path : "/home",
+    path : "/",
     element:<Layout><Home /></Layout>,
 },
 {
