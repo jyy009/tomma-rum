@@ -21,18 +21,6 @@ function Projects() {
       })
   }, [])
 
-  // useEffect(() => {
-  //   fetchProjImage()
-  //     .then((response) => {
-  //       setProjects(response)
-  //       setIsLoading(false)
-  //     })
-  //     .catch((error) => {
-  //       console.error("API Error:", error)
-  //       setIsLoading(false)
-  //     })
-  // }, [])
-
   useEffect(() => {
     console.log("projects data:", projects)
   }, [projects])
