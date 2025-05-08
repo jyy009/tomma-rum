@@ -1,20 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&family=Darker+Grotesque:wght@300..900&display=swap");
 @import "tailwindcss";
 
-ul {
-  list-style: none;
+@theme {
+  --color-background: #fffdf7;
+  --color-accent: #E2D4A6;
+  --font-headers: "Darker Grotesque", sans-serif;
 }
 
-a {
-  list-style: none;
-}
-
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+html {
+  font-family: "Cal Sans", sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #958a8a;
+  font-weight: 600;
+  color: black;
+  background-color: var(--color-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -23,4 +21,18 @@ a {
 
 body {
   margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-headers);
 }
