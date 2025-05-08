@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react"
 
-function Project({...project}) {
+function Project({ title, date }) {
+  const formatDate = (date) => {
+    return date.slice(0, 10)
+  }
+
   return (
     <section>
-      <div>
-        <img src={project.source_url} alt={project.slug} />
-      </div>
-      <div>
-        
-      </div>
+      <h2>{title.rendered}</h2>
+      <p>{formatDate(date)}</p>
     </section>
   )
 }

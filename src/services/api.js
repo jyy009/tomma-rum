@@ -17,7 +17,7 @@ export async function getArtProjects() {
 
 export async function fetchProjImage() {
   try {
-    const response = await fetch(`${BASE_URL}/media`)
+    const response = await fetch(`${BASE_URL}/media?parent={:id}`)
 
     if (!response.ok) {
       throw new Error(`Failed to fetch: ${response.status}`)

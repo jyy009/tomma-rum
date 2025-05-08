@@ -1,6 +1,6 @@
 import React from "react"
 import { useEffect, useState } from "react"
-import { fetchProjImage, getArtProjects } from "../../services/api"
+import { getArtProjects } from "../../services/api"
 import { MdOutlineHomeWork } from "react-icons/md"
 import Project from "../../components/sharedComponents/project/Project"
 import { Link } from "react-router-dom"
@@ -9,20 +9,8 @@ function Projects() {
   const [projects, setProjects] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  // useEffect(() => {
-  //   getArtProjects()
-  //     .then((response) => {
-  //       setProjects(response)
-  //       setIsLoading(false)
-  //     })
-  //     .catch((error) => {
-  //       console.error("API Error:", error)
-  //       setIsLoading(false)
-  //     })
-  // }, [])
-
   useEffect(() => {
-    fetchProjImage()
+    getArtProjects()
       .then((response) => {
         setProjects(response)
         setIsLoading(false)
@@ -32,6 +20,18 @@ function Projects() {
         setIsLoading(false)
       })
   }, [])
+
+  // useEffect(() => {
+  //   fetchProjImage()
+  //     .then((response) => {
+  //       setProjects(response)
+  //       setIsLoading(false)
+  //     })
+  //     .catch((error) => {
+  //       console.error("API Error:", error)
+  //       setIsLoading(false)
+  //     })
+  // }, [])
 
   useEffect(() => {
     console.log("projects data:", projects)
