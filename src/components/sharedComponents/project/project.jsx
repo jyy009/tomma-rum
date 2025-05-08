@@ -1,11 +1,16 @@
 import React from 'react'
 
-function project() {
+function Project({...project}) {
   return (
-    <div>
-      
-    </div>
+    <section>
+      <div>
+        <img src={project.source_url} alt={project.slug} />
+      </div>
+      <div>
+        
+      </div>
+    </section>
   )
 }
 
-export default project
+export default Project
