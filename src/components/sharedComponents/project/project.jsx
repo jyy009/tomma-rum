@@ -14,7 +14,7 @@ function Project({ title, date, content }) {
 
   return (
     <section>
-      <img src={imageUrl} alt={title.rendered} />
+      <img src={imageUrl} alt={title.rendered} className="w-[407px] h-[282px] object-cover"/>
       <h2>{title.rendered}</h2>
       <p>{formatDate(date)}</p>
     </section>
