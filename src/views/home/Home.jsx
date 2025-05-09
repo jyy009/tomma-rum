@@ -54,32 +54,30 @@ function Home() {
   </h4>
           <p className="leading-relaxed">
           <span className="block">Varje sommar arrangerar alla deltagare tillsammans en</span>
-  <span className="block">vistelse på en mindre ort i Sverige. Tomma rum handlar</span>
-  <span className="block">om att mötas och att skapa nya former av samarbeten</span>
-  <span className="block">mellan konstnärer, kulturutövare och lokalbefolkningen</span>
-  <span className="block">på den ort vi besöker.</span>
+          <span className="block">vistelse på en mindre ort i Sverige. Tomma rum handlar</span>
+          <span className="block">om att mötas och att skapa nya former av samarbeten</span>
+          <span className="block">mellan konstnärer, kulturutövare och lokalbefolkningen</span>
+          <span className="block">på den ort vi besöker.</span>
           </p>
         </div>
       </div>
-      <div className="text-2xl">
-        <h1>Forsa 2025</h1>
+      <div className="text-5xl p-6">
+        <p>Forsa 2025</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto p-6">
   {/* Text Block 1 */}
   <div className="">
     <p className="">
-    Forsa, här kommer vi! Beläget i de blå bergens och folkmusikens landskap Hälsingland, närmare bestämt i Hudiksvalls kommun, ligger Forsa socken och samhället Sörforsa. Här kommer vi mötas av industrihistoria av enorma mått. Fram till på 70-talet fanns här en livlig textilindustri, som sedan trappat ner men fortfarande finns kvar. 
-
-De numera oanvända delarna av textilfabriken bildar vårt residens för sommaren. Kanske de största lokalerna hittills i Tomma Rums historia? Holma Helsinglands AB, som sedan 1898 drivit sitt linnspinneri och väveri vid bygdens sjö är våra värdar för sommaren.
+    <span className="block">Forsa, här kommer vi! Beläget i de blå bergens och folkmusikens landskap Hälsingland, närmare bestämt i Hudiksvalls kommun, ligger Forsa socken och samhället Sörforsa. Här kommer vi mötas av industrihistoria av enorma mått. Fram till på 70-talet fanns här en livlig textilindustri, som sedan trappat ner men fortfarande finns kvar. </span>
+    <span className="block">De numera oanvända delarna av textilfabriken bildar vårt residens för sommaren. Kanske de största lokalerna hittills i Tomma Rums historia? Holma Helsinglands AB, som sedan 1898 drivit sitt linnspinneri och väveri vid bygdens sjö är våra värdar för sommaren.</span>
     </p>
   </div>
 
   {/* Text Block 2 */}
   <div className="">
     <p className="">
-    Vi har tillgång till en av de enormt rymliga byggnaderna. Där finns ett enklare kök och badrum. Vi kommer i år vara tio personer per vecka. Viktigt att veta är att vi kommer att sova i delar av det som tidigare har varit omklädningsrum och vissa kommer sova flera personer i samma rum. 
-
-Det finns då avskiljande lättväggar, sådana som används på mässor. I Sörforsa finns matvarubutik, pizzeria och second-hand. I Hudiksvall finns större butiker. Varmt välkommen till en ny oförglömlig sommar med nya kreativa möten!
+    <span className="block">Vi har tillgång till en av de enormt rymliga byggnaderna. Där finns ett enklare kök och badrum. Vi kommer i år vara tio personer per vecka. Viktigt att veta är att vi kommer att sova i delar av det som tidigare har varit omklädningsrum och vissa kommer sova flera personer i samma rum. </span>
+    <span className="block">Det finns då avskiljande lättväggar, sådana som används på mässor. I Sörforsa finns matvarubutik, pizzeria och second-hand. I Hudiksvall finns större butiker. Varmt välkommen till en ny oförglömlig sommar med nya kreativa möten!</span>
     </p>
   </div>
 

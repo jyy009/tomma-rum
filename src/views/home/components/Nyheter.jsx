@@ -19,7 +19,7 @@ function Nyheter({ newsItems }) {
                 <span className="text-gray-500">{item.date}</span>
               </div>
               <p className="text-gray-700 mb-4">{item.text}</p>
-              <button className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors">
+              <button className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors rounded-full">
                 Läs mer
               </button>
             </div>
