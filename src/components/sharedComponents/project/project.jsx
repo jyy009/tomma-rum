@@ -1,6 +1,7 @@
 import React from "react"
+import Button from "../button/Button"
 
-function Project({ title, date, content }) {
+function Project({ title, date, content, id }) {
   const formatDate = (date) => {
     return date.slice(0, 10)
   }
@@ -17,6 +18,7 @@ function Project({ title, date, content }) {
       <img src={imageUrl} alt={title.rendered} className="w-[407px] h-[282px] object-cover"/>
       <h2>{title.rendered}</h2>
       <p>{formatDate(date)}</p>
+      <Button projectId={id}/>
     </section>
   )
 }

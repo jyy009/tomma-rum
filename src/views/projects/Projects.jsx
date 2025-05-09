@@ -35,9 +35,9 @@ function Projects() {
         <div className="md:flex md:flex-wrap md:gap-15 md:mx-35">
           {projects.map((project) => (
             <div key={project.id}>
-              <Link to={`/projects/${project.id}`}>
-                <Project {...project} />
-              </Link>
+              {/* <Link to={`/projects/${project.id}`}> */}
+              <Project {...project} />
+              {/* </Link> */}
             </div>
           ))}
         </div>
