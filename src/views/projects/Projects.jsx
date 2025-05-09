@@ -1,6 +1,6 @@
 import React from "react"
 import { useEffect, useState } from "react"
-import { getArtProjects, fetchProjImage } from "../../services/api"
+import { getArtProjects } from "../../services/api"
 import { MdOutlineHomeWork } from "react-icons/md"
 import Project from "../../components/sharedComponents/project/Project"
 import { Link } from "react-router-dom"
@@ -20,7 +20,6 @@ function Projects() {
         setIsLoading(false)
       })
   }, [])
-
 
   useEffect(() => {
     console.log("projects data:", projects)

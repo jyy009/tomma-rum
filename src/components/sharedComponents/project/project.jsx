@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
-function Project({ id, title, date, content }) {
+function Project({ title, date, content }) {
   const formatDate = (date) => {
     return date.slice(0, 10)
   }
