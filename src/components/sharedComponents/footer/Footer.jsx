@@ -2,7 +2,7 @@ import React from "react"
 
 function Footer() {
   return (
-    <footer className="bg-stone-950 text-stone-50 absolute bottom-0 w-screen text-center font-bold p-3 sm:flex sm:justify-between px-10 md:pr-20">
+    <footer className="bg-stone-950 text-stone-50 bottom-0 w-screen text-center font-bold p-3 sm:flex sm:justify-between px-10 md:pr-20">
       <div className="flex justify-center items-center ">
         <img src="src/assets/tommarum-logo_TR-WHITE.png" alt="the tomma rum logo" className=" w-[24rem] mb-5 sm:mb-0"/>
       </div>
