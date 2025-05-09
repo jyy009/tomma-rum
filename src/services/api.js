@@ -14,3 +14,5 @@ export async function getArtProjects() {
     throw error
   }
 }
+
+
