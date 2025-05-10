@@ -5,15 +5,16 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 
 function Navbar() {
   const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);       
 
   return (
-    <nav className="mt-5 open-sans-body flex justify-between items-center px-6 lg:px-12">
-      <div className="text-orange-400 text-5xl lg:text-6xl">
+    <nav className="open-sans-body flex justify-between items-center px-6 lg:px-12 bg-[#E2D4A6]">
+      <div className="text-black flex text-5xl lg:text-6xl">
         <MdOutlineHomeWork className="text-stone-800"/>
+        <h1 className='text-2xl mt-3 ml-2'>TOMMA ROM</h1>
       </div>
       <button
-        className="text-orange-400 text-3xl md:hidden"
+        className="text-black text-3xl md:hidden"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         {menuOpen ? <FaTimes /> : <FaBars />}
@@ -23,30 +24,32 @@ function Navbar() {
           menuOpen ? 'block' : 'hidden md:flex'
         }`}
       >
-        <ul className="flex flex-col md:flex-row md:items-center md:space-x-6 text-lg text-center">
+        <ul className="flex flex-col md:flex-row md:items-center md:space-x-15 text-lg text-center text-black">
           <Link
             to="/"
-            className={location.pathname === '/' ? 'text-stone-800' : 'text-orange-400'}
+            className={location.pathname === '/' ? 'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
+
           >
-            Home
-          </Link>
-          <Link
-            to="/projects"
-            className={location.pathname === '/projects' ? 'text-stone-800' : 'text-orange-400'}
-          >
-            Projects
+            Hem
           </Link>
           <Link
             to="/about"
-            className={location.pathname === '/about' ? 'text-stone-800' : 'text-orange-400'}
+            className={location.pathname === '/about' ? 'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
           >
-            About
+            Om oss
           </Link>
           <Link
-            to="/booking"
-            className={location.pathname === '/booking' ? 'text-stone-800' : 'text-orange-400'}
+            to="/projects"
+            className={location.pathname === '/projects' ?  'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
           >
-            Booking
+            Projekt
+          </Link>
+          
+          <Link
+            to="/booking"
+            className={location.pathname === '/booking' ?  'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
+          >
+            Anmälan
           </Link>
         </ul>
       </div>
