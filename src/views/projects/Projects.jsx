@@ -35,21 +35,30 @@ function Projects() {
           <MdOutlineHomeWork className="text-stone-800 text-4xl" />
         </div>
       ) : (
-        <div className="flex flex-col justify-center items-center gap-10 md:flex md:flex-wrap md:gap-15 md:mx-35">
+        <div className="flex flex-col justify-center items-center gap-10 mx-4 mt-5 mb-8 md:flex md:flex-wrap md:gap-15 md:mx-35">
           {projects.map((project) => (
             <div key={project.id}>
               <Project {...project} />
             </div>
           ))}
-          <div>
-            {page > 1 && (
-              <button onClick={() => setPage(page - 1)}>Prev </button>
+
+          <div className="flex flex-row items-center justify-between w-full max-w-xs mx-auto">
+            {page > 1 ? (
+              <button onClick={() => setPage(page - 1)} className="w-[60px]">
+                Prev
+              </button>
+            ) : (
+              <span className="w-[60px]"></span>
             )}
-            <span>
+            <span className="text-center flex-1">
               {page} of {totalPages}
             </span>
-            {page < totalPages && (
-              <button onClick={() => setPage(page + 1)}>Next</button>
+            {page < totalPages ? (
+              <button onClick={() => setPage(page + 1)} className="w-[60px]">
+                Next
+              </button>
+            ) : (
+              <span className="w-[60px]"></span>
             )}
           </div>
         </div>

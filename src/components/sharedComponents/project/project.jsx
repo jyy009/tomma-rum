@@ -50,12 +50,12 @@ function Project({ title, date, content, id }) {
         )}
         {imageUrl && imageUrl.type === "embed" && (
           <div
-            className="w-[407px] h-[282px] object-cover"
+            className="w-[407px] h-[282px]"
             dangerouslySetInnerHTML={{ __html: imageUrl.element }}
           />
         )}
         {!imageUrl && (
-          <p className="w-[407px] h-[282px] object-cover"> no image</p>
+          <p className="w-[407px] h-[282px] "> no image</p>
         )}
         <div className="flex flex-col items-center gap-6 ">
           <h2 className="text-4xl font-bold">{title.rendered}</h2>
