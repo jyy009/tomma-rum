@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect, useState } from "react"
 import { getArtProjects } from "../../services/api"
 import { MdOutlineHomeWork } from "react-icons/md"
-import Project from "../../components/sharedComponents/project/Project"
+import Project from "../../components/sharedComponents/project/project"
 
 function Projects() {
   const [projects, setProjects] = useState([])
@@ -42,11 +42,15 @@ function Projects() {
             </div>
           ))}
           <div>
-            <button onClick={() => setPage(page - 1)}> Prev </button>
+            {page > 1 && (
+              <button onClick={() => setPage(page - 1)}>Prev </button>
+            )}
             <span>
               {page} of {totalPages}
             </span>
-            <button onClick={() => setPage(page + 1)}> Next </button>
+            {page < totalPages && (
+              <button onClick={() => setPage(page + 1)}>Next</button>
+            )}
           </div>
         </div>
       )}

@@ -6,14 +6,9 @@ function Project({ title, date, content, id }) {
     return date.slice(0, 10)
   }
 
-  // const extractFirstImage = (html) => {
-  //   const match = html.match(/<img[^>]+src="([^">]+)"/)
-  //   return match ? match[1] : null
-  // }
-
   function extractFirstMedia(html) {
     const parser = new DOMParser()
-    const doc = parser.parseFromString(html, 'text/html')
+    const doc = parser.parseFromString(html, "text/html")
 
     const img = doc.querySelector("img")
     if (img) {
@@ -36,21 +31,6 @@ function Project({ title, date, content, id }) {
   const imageUrl = extractFirstMedia(content.rendered)
 
   return (
-    // <section>
-    //   <img
-    //     src={imageUrl}
-    //     alt={title.rendered}
-    //     className="w-[407px] h-[282px] object-cover"
-    //   />
-    //   {/* <div
-    //     className="w-[407px] h-[282px] object-cover"
-    //     dangerouslySetInnerHTML={{ __html: content.rendered }}
-    //   /> */}
-    //   <h2>{title.rendered}</h2>
-    //   <p>{formatDate(date)}</p>
-    //   <Button projectId={id} />
-    // </section>
-
     <section>
       {imageUrl && imageUrl.type === "image" && (
         <img
@@ -64,7 +44,6 @@ function Project({ title, date, content, id }) {
         <div
           className="w-[407px] h-[282px] object-cover"
           dangerouslySetInnerHTML={{ __html: imageUrl.element }}
-          
         />
       )}
 
@@ -73,6 +52,10 @@ function Project({ title, date, content, id }) {
           className="w-[407px] h-[282px] object-cover"
           dangerouslySetInnerHTML={{ __html: imageUrl.element }}
         />
+      )}
+
+      {!imageUrl && (
+        <p className="w-[407px] h-[282px] object-cover"> no image</p>
       )}
 
       <h2>{title.rendered}</h2>

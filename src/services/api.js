@@ -12,10 +12,9 @@ export async function getArtProjects({ page, pageSize}) {
 
     const data = await res.json()
     const totalPages = Number(res.headers.get("X-WP-TotalPages"))
-    console.log("data and pages:", data, totalPages)
-    console.log("data length:", data.length)
+
     return {data, totalPages}
-    // return await res.json()
+
   } catch (error) {
     console.error("Fetch Error:", error.message || error)
     throw error
