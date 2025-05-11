@@ -15,4 +15,7 @@ export async function getArtProjects() {
   }
 }
 
-
+export function getArtProjectsByYear(year) {
+  return fetch(`https://tommarum.se/wp-json/wp/v2/posts?after=${year}-01-01T00:00:00&before=${year}-12-31T23:59:59`)
+    .then(res => res.json());
+}
