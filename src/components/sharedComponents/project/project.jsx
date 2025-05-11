@@ -32,35 +32,37 @@ function Project({ title, date, content, id }) {
 
   return (
     <section>
-      {imageUrl && imageUrl.type === "image" && (
-        <img
-          src={imageUrl.src}
-          alt={title.rendered}
-          className="w-[407px] h-[282px] object-cover"
-        />
-      )}
-
-      {imageUrl && imageUrl.type === "iframe" && (
-        <div
-          className="w-[407px] h-[282px] object-cover"
-          dangerouslySetInnerHTML={{ __html: imageUrl.element }}
-        />
-      )}
-
-      {imageUrl && imageUrl.type === "embed" && (
-        <div
-          className="w-[407px] h-[282px] object-cover"
-          dangerouslySetInnerHTML={{ __html: imageUrl.element }}
-        />
-      )}
-
-      {!imageUrl && (
-        <p className="w-[407px] h-[282px] object-cover"> no image</p>
-      )}
-
-      <h2>{title.rendered}</h2>
-      <p>{formatDate(date)}</p>
-      <Button projectId={id} />
+      <div className="flex flex-col gap-7">
+        {imageUrl && imageUrl.type === "image" && (
+          <img
+            src={imageUrl.src}
+            alt={title.rendered}
+            className="w-[407px] h-[282px] object-cover"
+          />
+        )}
+        {imageUrl && imageUrl.type === "iframe" && (
+          <div className="w-full min-w-[407px] aspect-[407/282] mx-auto">
+            <div
+              className="w-full h-full"
+              dangerouslySetInnerHTML={{ __html: imageUrl.element }}
+            />
+          </div>
+        )}
+        {imageUrl && imageUrl.type === "embed" && (
+          <div
+            className="w-[407px] h-[282px] object-cover"
+            dangerouslySetInnerHTML={{ __html: imageUrl.element }}
+          />
+        )}
+        {!imageUrl && (
+          <p className="w-[407px] h-[282px] object-cover"> no image</p>
+        )}
+        <div className="flex flex-col items-center gap-6 ">
+          <h2 className="text-4xl font-bold">{title.rendered}</h2>
+          <p className="text-base font-normal">{formatDate(date)}</p>
+          <Button className="w-[160px] h-[39px] text-base" projectId={id} />
+        </div>
+      </div>
     </section>
   )
 }
