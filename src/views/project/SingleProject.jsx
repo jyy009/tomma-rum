@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-// import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { getArtProjectById } from "../../services/api"
 
 function extractParagraphText(html) {
@@ -20,9 +20,7 @@ const extractAllImages = (html) => {
 }
 
 function SingleProject() {
-  // const { id } = useParams() || { id: 6351 }
-  const id = 6330
-
+  const { id } = useParams()
   const [project, setProject] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
