@@ -1,8 +1,28 @@
 const BASE_URL = "https://tommarum.se/wp-json/wp/v2"
 
-export async function getArtProjects() {
+export async function getArtProjects({ page, pageSize }) {
   try {
-    const res = await fetch(`${BASE_URL}/posts`)
+    const res = await fetch(
+      `${BASE_URL}/posts?page=${page}&per_page=${pageSize}`
+    )
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`)
+    }
+
+    const data = await res.json()
+    const totalPages = Number(res.headers.get("X-WP-TotalPages"))
+
+    return { data, totalPages }
+  } catch (error) {
+    console.error("Fetch Error:", error.message || error)
+    throw error
+  }
+}
+
+export async function getArtProjectById(id) {
+  try {
+    const res = await fetch(`${BASE_URL}/posts/${id}`)
 
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`)
@@ -15,4 +35,15 @@ export async function getArtProjects() {
   }
 }
 
-
+export async function getLatestNewsPosts(perPage = 3) {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/posts?per_page=${perPage}&_embed=wp:featuredmedia`
+    );
+    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    return await res.json();
+  } catch (error) {
+    console.error("Posts Fetch Error:", error);
+    throw error;
+  }
+}

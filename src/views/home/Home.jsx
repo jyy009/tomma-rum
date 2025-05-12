@@ -4,26 +4,6 @@ import Nyheter from "./components/Nyheter"
 import kartaImage from "../../assets/karta.png";
 
 function Home() {
-  const newsItems = [
-    {
-      id: 1,
-      city: "Stockholm",
-      date: "2023-05-15",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      id: 2,
-      city: "Göteborg",
-      date: "2023-06-22",
-      text: "Ut enim ad minim veniam, quis nostrud exercitation.",
-    },
-    {
-      id: 3,
-      city: "Malmö",
-      date: "2023-07-30",
-      text: "Duis aute irure dolor in reprehenderit in voluptate.",
-    },
-  ]
 
   return (
     <div className="space-y-12">
@@ -126,7 +106,7 @@ function Home() {
 
       {/* Nyheter Section - will automatically appear below */}
       <div className="max-w-7xl mx-auto px-6">
-        <Nyheter newsItems={newsItems} />
+        <Nyheter />
       </div>
     </div>
   )
