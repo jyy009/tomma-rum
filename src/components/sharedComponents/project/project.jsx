@@ -39,16 +39,16 @@ function Project({ title, date, content, id }) {
 
   return (
     <section>
-      <div className="flex flex-col gap-7">
+      <div className="flex flex-col gap-7 2xl:gap-8">
         {imageUrl && imageUrl.type === "image" && (
           <img
             src={imageUrl.src}
             alt={title.rendered}
-            className="w-[407px] h-[282px] object-cover"
+            className="w-[407px] h-[282px] 2xl:w-[443px] 2xl:h-[308px] object-cover"
           />
         )}
         {imageUrl && imageUrl.type === "iframe" && (
-          <div className="w-full min-w-[407px] aspect-[407/282] mx-auto">
+          <div className="w-full min-w-[407px] aspect-[407/282] mx-auto 2xl:min-w-[443px] 2xl:aspect-[443/308] ">
             <div
               className="w-full h-full"
               dangerouslySetInnerHTML={{ __html: imageUrl.element }}
@@ -57,20 +57,24 @@ function Project({ title, date, content, id }) {
         )}
         {imageUrl && imageUrl.type === "embed" && (
           <div
-            className="w-[407px] h-[282px]"
+            className="w-[407px] h-[282px] 2xl:w-[443px] 2xl:h-[308px]"
             dangerouslySetInnerHTML={{ __html: imageUrl.element }}
           />
         )}
-        {!imageUrl && <p className="w-[407px] h-[282px] "> no image</p>}
+        {!imageUrl && (
+          <p className="w-[407px] h-[282px] 2xl:w-[443px] 2xl:h-[308px]">
+            {" "}
+            no image
+          </p>
+        )}
 
-        <div className="flex flex-col items-center gap-6 mb-10">
+        <div className="flex flex-col items-center gap-6 2xl:mb-0 2xl:gap-7">
           <h2 className="text-4xl font-bold">
             {truncateString(title.rendered, 2)}
           </h2>
           <p className="text-base font-normal">{formatDate(date)}</p>
           <Button className="w-[160px] h-[39px] text-base" projectId={id} />
         </div>
-
       </div>
     </section>
   )

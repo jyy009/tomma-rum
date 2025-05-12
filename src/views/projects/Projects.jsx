@@ -36,14 +36,14 @@ function Projects() {
         </div>
       ) : (
         <>
-          <div className="flex flex-wrap justify-center items-center mt-5 md:flex md:flex-wrap md:gap-15 md:mx-35">
+          <div className="flex flex-wrap justify-center items-center mt-5 mx-4 gap-10 md:gap-15 md:mx-35 2xl:gap-0 2xl:gap-x-7 2xl:gap-y-16 2xl:mx-16 2xl:mt-16 ">
             {projects.map((project) => (
               <div key={project.id}>
                 <Project {...project} />
               </div>
             ))}
           </div>
-          <div className="flex flex-row items-center justify-between w-full max-w-xs mx-auto">
+          <div className="flex flex-row items-center justify-between w-full max-w-xs mx-auto my-10">
             {page > 1 ? (
               <button onClick={() => setPage(page - 1)} className="w-[60px]">
                 Prev
