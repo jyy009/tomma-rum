@@ -82,7 +82,7 @@ function Nyheter() {
                 {/* Read More Button */}
                 <a 
                   href={post.link} 
-                  className="inline-block px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors mt-4"
+                  className="inline-block px-4 py-2 border border-black-300 rounded mt-4"
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
