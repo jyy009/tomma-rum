@@ -35,7 +35,7 @@ function Projects() {
           <MdOutlineHomeWork className="text-stone-800 text-4xl" />
         </div>
       ) : (
-        <div className="flex flex-col justify-center items-center gap-10 mx-4 mt-5 mb-8 md:flex md:flex-wrap md:gap-15 md:mx-35">
+        <div className="md:flex md:flex-wrap md:gap-15 md:mx-35">
           {projects.map((project) => (
             <div key={project.id}>
               <Project {...project} />

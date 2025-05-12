@@ -28,6 +28,13 @@ function Project({ title, date, content, id }) {
     return null
   }
 
+  function truncateString(title, num) {
+    if (title.length <= 1) {
+      return title
+    }
+    return title.split(" ").slice(0, num).join(" ") + "..."
+  }
+
   const imageUrl = extractFirstMedia(content.rendered)
 
   return (
@@ -54,11 +61,11 @@ function Project({ title, date, content, id }) {
             dangerouslySetInnerHTML={{ __html: imageUrl.element }}
           />
         )}
-        {!imageUrl && (
-          <p className="w-[407px] h-[282px] "> no image</p>
-        )}
+        {!imageUrl && <p className="w-[407px] h-[282px] "> no image</p>}
         <div className="flex flex-col items-center gap-6 ">
-          <h2 className="text-4xl font-bold">{title.rendered}</h2>
+          <h2 className="text-4xl font-bold">
+            {truncateString(title.rendered, 2)}
+          </h2>
           <p className="text-base font-normal">{formatDate(date)}</p>
           <Button className="w-[160px] h-[39px] text-base" projectId={id} />
         </div>
