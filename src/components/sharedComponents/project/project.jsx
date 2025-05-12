@@ -62,13 +62,15 @@ function Project({ title, date, content, id }) {
           />
         )}
         {!imageUrl && <p className="w-[407px] h-[282px] "> no image</p>}
-        <div className="flex flex-col items-center gap-6 ">
+
+        <div className="flex flex-col items-center gap-6 mb-10">
           <h2 className="text-4xl font-bold">
             {truncateString(title.rendered, 2)}
           </h2>
           <p className="text-base font-normal">{formatDate(date)}</p>
           <Button className="w-[160px] h-[39px] text-base" projectId={id} />
         </div>
+
       </div>
     </section>
   )
