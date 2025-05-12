@@ -40,7 +40,7 @@ function SingleProject() {
   if (!project) return <div>Project not found.</div>
 
   return (
-    <section className="p-16">
+    <section className="p-4 md:p-16">
       <article className="py-4">
         <p>{project.date?.slice(0, 10)}</p>
         <h3 className="text-4xl">{project.title?.rendered}</h3>
@@ -52,7 +52,7 @@ function SingleProject() {
           ))}
         </div>
         {extractAllImages(project.content?.rendered).length > 0 && (
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
             {extractAllImages(project.content?.rendered).map((url, idx) => (
               <img
                 key={idx}
