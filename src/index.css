@@ -7,6 +7,12 @@
   --font-headers: "Darker Grotesque", sans-serif;
 }
 
+@layer utilities {
+  .max-w-60ch {
+    max-width: 60ch;
+  }
+}
+
 html {
   font-family: "Cal Sans", sans-serif;
   line-height: 1.5;
