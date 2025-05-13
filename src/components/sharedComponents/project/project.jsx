@@ -62,8 +62,7 @@ function Project({ title, date, content, id }) {
           />
         )}
         {!imageUrl && (
-          <p className="w-[407px] h-[282px] 2xl:w-[443px] 2xl:h-[308px]">
-            {" "}
+          <p className="w-[407px] h-[282px] 2xl:w-[443px] 2xl:h-[308px] flex flex-row justify-center items-center">
             no image
           </p>
         )}
