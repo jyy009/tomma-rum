@@ -73,9 +73,9 @@ function Nyheter() {
     : "";
 
   return (
-    <article key={post.id} className="py-4 flex flex-col h-full">
+<article key={post.id} className="py-4 flex flex-col items-center text-center h-full">
   {firstImage && (
-    <div className="mb-4">
+    <div className="mb-4 w-full">
       <img
         src={firstImage}
         alt={post.title?.rendered}
@@ -100,7 +100,7 @@ function Nyheter() {
     </p>
   )}
 
-  <Button projectId={post.id} className="text-sm" />
+  <Button projectId={post.id} className="text-sm mt-2" />
 </article>
 
   )
