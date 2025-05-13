@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../button/Button";
 
-function Project({ title, date, id, imageUrl }) {
+function Project({ title, date, imageUrl, year }) {
   const formatDate = (date) => date?.slice(0, 10) || "";
 
   return (
@@ -25,7 +25,7 @@ function Project({ title, date, id, imageUrl }) {
             {title.rendered}
           </h2>
           <p className="text-xl font-normal mb-4">{formatDate(date)}</p>
-          <Button className="w-[160px] h-[39px] text-base" projectId={id} />
+          <Button className="w-[160px] h-[39px] text-base" year={year} />
         </div>
       </div>
     </section>

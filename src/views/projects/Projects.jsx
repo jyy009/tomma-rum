@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  getCategories,
-  getArtProjectsByYear,
-} from "../../services/api";
-import logoLoader from "../../../src/assets/tommarum-logo_TR-BLACK.png";
-import Project from "../../components/sharedComponents/project/project";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { getCategories, getArtProjectsByYear } from "../../services/api"
+import logoLoader from "../../../src/assets/tommarum-logo_TR-BLACK.png"
+import Project from "../../components/sharedComponents/project/project"
 
 function getFirstImageFromPostContent(html) {
-  if (!html) return null;
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
-  const img = doc.querySelector("img");
-  return img ? img.src : null;
+  if (!html) return null
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(html, "text/html")
+  const img = doc.querySelector("img")
+  return img ? img.src : null
 }
 
-const EXCLUDED_CATEGORIES = ["osynlig", "uncategorized", "utbyta", "nordingrå"];
+const EXCLUDED_CATEGORIES = ["osynlig", "uncategorized", "utbyta", "nordingrå"]
 
 const filterAndSortCategories = (categories) => {
   return categories
@@ -23,53 +20,73 @@ const filterAndSortCategories = (categories) => {
       (cat) => !EXCLUDED_CATEGORIES.includes(cat.name.trim().toLowerCase())
     )
     .sort((a, b) => {
-      const yearA = Number(a.description);
-      const yearB = Number(b.description);
-      if (!isNaN(yearA) && !isNaN(yearB)) return yearB - yearA;
-      if (!isNaN(yearA)) return -1;
-      if (!isNaN(yearB)) return 1;
-      return a.name.localeCompare(b.name);
-    });
-};
+      const yearA = Number(a.description)
+      const yearB = Number(b.description)
+      if (!isNaN(yearA) && !isNaN(yearB)) return yearB - yearA
+      if (!isNaN(yearA)) return -1
+      if (!isNaN(yearB)) return 1
+      return a.name.localeCompare(b.name)
+    })
+}
 
 function Projects() {
-  const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
-  const [categoriesLoading, setCategoriesLoading] = useState(true);
-  const [selectedYear, setSelectedYear] = useState(null);
-  const [categoryImages, setCategoryImages] = useState({});
+  const [categoryImages, setCategoryImages] = useState({})
+  const { year } = useParams()
+  const storedCategories = localStorage.getItem("categories")
+  const initialCategories = storedCategories ? JSON.parse(storedCategories) : []
+  const [categories, setCategories] = useState(initialCategories)
+  const [categoriesLoading, setCategoriesLoading] = useState(
+    initialCategories.length === 0
+  )
 
   useEffect(() => {
-    setCategoriesLoading(true);
+    if (categories.length > 0) return
+
+    setCategoriesLoading(true)
     getCategories()
-      .then((data) => setCategories(filterAndSortCategories(data)))
+      .then((data) => {
+        const filtered = filterAndSortCategories(data)
+        setCategories(filtered)
+        localStorage.setItem("categories", JSON.stringify(filtered))
+      })
       .catch((error) => console.error("Categories API Error:", error))
-      .finally(() => setCategoriesLoading(false));
-  }, []);
+      .finally(() => setCategoriesLoading(false))
+  }, [])
 
   useEffect(() => {
-    if (categories.length === 0) return;
+    if (categories.length === 0) return
+
     categories.forEach((category) => {
-      if (!categoryImages[category.description]) {
-        getArtProjectsByYear(category.description, 1, 10)
+      const year = category.description
+      const cachedImage = localStorage.getItem(`categoryImage_${year}`)
+      if (cachedImage) {
+        setCategoryImages((prev) => ({
+          ...prev,
+          [year]: cachedImage,
+        }))
+      } else {
+        getArtProjectsByYear(year, 1, 10)
           .then(({ data }) => {
             const imageUrl = getFirstImageFromPostContent(
               data?.[0]?.content?.rendered
-            );
+            )
+            if (imageUrl) {
+              localStorage.setItem(`categoryImage_${year}`, imageUrl)
+            }
             setCategoryImages((prev) => ({
               ...prev,
-              [category.description]: imageUrl,
-            }));
+              [year]: imageUrl,
+            }))
           })
           .catch(() => {
             setCategoryImages((prev) => ({
               ...prev,
-              [category.description]: null,
-            }));
-          });
+              [year]: null,
+            }))
+          })
       }
-    });
-  }, [categories]);
+    })
+  }, [categories])
 
   if (categoriesLoading) {
     return (
@@ -81,7 +98,7 @@ function Projects() {
           style={{ objectFit: "contain" }}
         />
       </div>
-    );
+    )
   }
 
   return (
@@ -90,26 +107,22 @@ function Projects() {
         {categories.map((category) => (
           <div
             key={category.id}
-            onClick={() => {
-              setSelectedYear(category.description);
-              navigate(`/projects/${category.description}`);
-            }}
-            className={`cursor-pointer transition-all duration-200 ${
-              selectedYear === category.description ? "scale-105" : ""
+            className={`transition-all duration-200 ${
+              year === category.description ? "scale-105" : ""
             }`}
           >
             <Project
               title={{ rendered: category.name }}
               date={category.description}
               id={category.id}
+              year={category.description}
               imageUrl={categoryImages[category.description]}
             />
           </div>
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default Projects;
-
+export default Projects

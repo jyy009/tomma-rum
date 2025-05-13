@@ -38,21 +38,29 @@ function SingleProject() {
       })
   }, [year])
 
-  if (isLoading) return <div>Loading...</div>
-  if (!posts || posts.length === 0) return <div>No posts found for {year}.</div>
-
   return (
-    <section className="p-4 md:p-16">
-      <h2 className="text-7xl mb-6">{year}</h2>
-      {posts.map((post) => (
-        <BlogPost
-          key={post.id}
-          date={post.date}
-          title={post.title?.rendered}
-          paragraphs={extractParagraphText(post.content?.rendered)}
-          imageUrls={extractAllImages(post.content?.rendered)}
-        />
-      ))}
+    <section className="p-4 md:p-16 min-h-[70vh]">
+      {isLoading ? (
+        <div>
+          <div className="h-20 w-2xl bg-gray-200 animate-pulse mb-8 rounded"></div>
+          <div className="h-60 w-2xl bg-gray-200 animate-pulse mb-8 rounded"></div>
+        </div>
+      ) : posts.length === 0 ? (
+        <div>No posts found for {year}.</div>
+      ) : (
+        <>
+          <h2 className="text-7xl mb-6">{year}</h2>
+          {posts.map((post) => (
+            <BlogPost
+              key={post.id}
+              date={post.date}
+              title={post.title?.rendered}
+              paragraphs={extractParagraphText(post.content?.rendered)}
+              imageUrls={extractAllImages(post.content?.rendered)}
+            />
+          ))}
+        </>
+      )}
     </section>
   )
 }
