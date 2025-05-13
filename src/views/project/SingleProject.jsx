@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { getArtProjectById } from "../../services/api"
+import he from "he"
 
 function extractParagraphText(html) {
   if (!html) return []
@@ -43,7 +44,7 @@ function SingleProject() {
     <section className="p-4 md:p-16">
       <article className="py-4">
         <p>{project.date?.slice(0, 10)}</p>
-        <h3 className="text-4xl">{project.title?.rendered}</h3>
+        <h3 className="text-4xl">{he.decode(project.title?.rendered)}</h3>
         <div>
           {extractParagraphText(project.content?.rendered).map((text, idx) => (
             <p key={idx} className="max-w-60ch py-4">

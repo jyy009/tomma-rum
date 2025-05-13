@@ -1,5 +1,6 @@
 import React from "react"
 import Button from "../button/Button"
+import he from "he"
 
 function Project({ title, date, content, id }) {
   const formatDate = (date) => {
@@ -70,7 +71,7 @@ function Project({ title, date, content, id }) {
 
         <div className="flex flex-col items-center gap-6 2xl:mb-0 2xl:gap-7">
           <h2 className="text-4xl font-bold">
-            {truncateString(title.rendered, 2)}
+            {(truncateString(he.decode(title.rendered), 2))}
           </h2>
           <p className="text-base font-normal">{formatDate(date)}</p>
           <Button className="w-[160px] h-[39px] text-base" projectId={id} />
