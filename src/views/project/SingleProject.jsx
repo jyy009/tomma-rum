@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { getArtProjectsByYear } from "../../services/api"
 import BlogPost from "./BlogPost"
+import he from "he"
 
 function extractParagraphText(html) {
   if (!html) return []
@@ -54,7 +55,7 @@ function SingleProject() {
             <BlogPost
               key={post.id}
               date={post.date}
-              title={post.title?.rendered}
+              title={he.decode(post.title?.rendered)}
               paragraphs={extractParagraphText(post.content?.rendered)}
               imageUrls={extractAllImages(post.content?.rendered)}
             />
