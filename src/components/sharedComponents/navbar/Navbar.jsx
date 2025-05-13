@@ -8,10 +8,10 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="md:flex md:justify-between  open-sans-body bg-[#E2D4A6] px-6 lg:px-12 py-4">
+    <nav className="md:flex md:justify-between open-sans-body bg-[#E2D4A6] px-6 lg:px-12 py-4">
       <div className="flex justify-between items-center">
         <div className="w-50 h-12"  >
-        <img src={logo} alt="tommarum" />
+        <img src={logo} alt="tommarum"/>
         </div>
         <button
           className="text-black text-3xl md:hidden"
@@ -26,30 +26,29 @@ function Navbar() {
       to="/"
       className={`text-center w-full ${location.pathname === '/' ? 'border-b-2 border-black pb-1' : 'pb-1'}`}
       onClick={() => setMenuOpen(false)}
-    >
+      >
       Hem
-    </Link>
-    <Link
+      </Link>
+     <Link
       to="/about"
       className={`text-center w-full ${location.pathname === '/about' ? 'border-b-2 border-black pb-1' : 'pb-1'}`}
       onClick={() => setMenuOpen(false)}
-    >
+      >
       Om oss
-    </Link>
-    <Link
+     </Link>
+     <Link
       to="/projects"
       className={`text-center w-full ${location.pathname === '/projects' ? 'border-b-2 border-black pb-1' : 'pb-1'}`}
       onClick={() => setMenuOpen(false)}
-    >
+     >
       Projekt
-    </Link>
-    <Link
-      to="/booking"
-      className={`text-center w-full ${location.pathname === '/booking' ? 'border-b-2 border-black pb-1' : 'pb-1'}`}
-      onClick={() => setMenuOpen(false)}
-    >
+     </Link>
+      <a
+      href="https://bokning.tommarum.se"
+      className="pb-1 text-center w-full"
+      >
       Anmälan
-    </Link>
+      </a>
         </div>
       )}
       <div className="hidden md:flex space-x-10 mt-4 text-lg text-black">
@@ -71,12 +70,12 @@ function Navbar() {
         >
           Projekt
         </Link>
-        <Link
-          to="/booking"
-          className={location.pathname === '/booking' ? 'border-b-2 border-black pb-1' : 'pb-1'}
+        <a
+         href="https://bokning.tommarum.se"
+         className="pb-1"
         >
           Anmälan
-        </Link>
+        </a>
       </div>
     </nav>
   );
