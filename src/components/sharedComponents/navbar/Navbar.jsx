@@ -8,7 +8,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);       
 
   return (
-    <nav className="open-sans-body flex justify-between items-center px-6 lg:px-12 bg-[#E2D4A6]">
+    <nav className="open-sans-body flex justify-between items-center px-6 lg:px-12 bg-[var(--color-accent)]">
       <div className="text-black flex text-5xl lg:text-6xl">
         <MdOutlineHomeWork className="text-stone-800"/>
         <h1 className='text-2xl mt-3 ml-2'>TOMMA ROM</h1>

@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-function Button({ projectId, className }) {
+function Button({ year, className }) {
   return (
     <Link
-      to={`/projects/${projectId}`}
+      to={`/projects/${year}`}
       className={`uppercase bg-[var(--color-background)] border border-black rounded-full py-2 px-12 ${className}`}
     >
       Läs mer

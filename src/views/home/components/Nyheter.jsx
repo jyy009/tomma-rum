@@ -3,6 +3,7 @@ import { getLatestNewsPosts } from "../../../services/api"
 import { Link } from "react-router-dom"
 import Button from "../../../components/sharedComponents/button/Button"
 
+
 function extractParagraphText(html) {
   if (!html) return []
   const parser = new DOMParser()
