@@ -14,13 +14,12 @@ function extractParagraphText(html) {
 }
 
 function extractFirstImage(html) {
-    if (!html) return null;
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const img = doc.querySelector("img"); // Get the first <img> tag
-    return img?.getAttribute("src") || null;
-  }
-  
+  if (!html) return null
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(html, "text/html")
+  const img = doc.querySelector("img") // Get the first <img> tag
+  return img?.getAttribute("src") || null
+}
 
 function Nyheter() {
   const [posts, setPosts] = useState([])
@@ -37,7 +36,7 @@ function Nyheter() {
 
   if (isLoading)
     return (
-      <section className="p-4 md:p-16">
+        <section className="">
         <h2 className="text-4xl mb-12">Nyheter</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[...Array(3)].map((_, i) => (
@@ -60,51 +59,52 @@ function Nyheter() {
     )
 
   return (
-    <section className="p-4 md:p-16">
+<section className="">
+
       <h2 className="text-4xl mb-12">Nyheter</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {posts.map((post) => {
+        {posts.map((post) => {
+          const firstParagraph =
+            extractParagraphText(post.content?.rendered)[0] || ""
+          const firstImage = extractFirstImage(post.content?.rendered)
+          const date = post.date
+            ? new Date(post.date).toLocaleDateString("sv-SE")
+            : ""
 
-  const firstParagraph = extractParagraphText(post.content?.rendered)[0] || "";
-  const firstImage = extractFirstImage(post.content?.rendered); // ✅ new
-  const date = post.date
-    ? new Date(post.date).toLocaleDateString("sv-SE")
-    : "";
+          return (
+            <article
+              key={post.id}
+              className="py-4 flex flex-col items-center text-center h-full"
+            >
+              {firstImage && (
+                <div className="w-full max-w-[400px] mb-4">
+                  <img
+                    src={firstImage}
+                    alt={post.title?.rendered}
+                    className="w-full h-60 object-cover"
+                  />
+                </div>
+              )}
 
-  return (
-<article key={post.id} className="py-4 flex flex-col items-center text-center h-full">
-  {firstImage && (
-    <div className="mb-4 w-full">
-      <img
-        src={firstImage}
-        alt={post.title?.rendered}
-        className="w-full h-48 object-cover rounded"
-      />
-    </div>
-  )}
+              <h3 className="text-2xl font-medium text-black mb-2">
+                {post.title?.rendered}
+              </h3>
 
-  <h3 className="text-2xl font-medium text-black mb-2">
-    {post.title?.rendered}
-  </h3>
+              {date && (
+                <p className="text-black text-base font-medium mb-2">{date}</p>
+              )}
 
-  {date && (
-    <p className="text-black text-base font-medium mb-2">
-      {date}
-    </p>
-  )}
+              {firstParagraph && (
+                <p className="text-black text-base font-medium mb-4 max-w-60ch">
+                  {firstParagraph.substring(0, 150)}...
+                </p>
+              )}
 
-  {firstParagraph && (
-    <p className="text-black text-base font-medium mb-4 max-w-60ch">
-      {firstParagraph.substring(0, 150)}...
-    </p>
-  )}
-
-  <Button projectId={post.id} className="text-sm mt-2" />
-</article>
-
-  )
-})}
+              <Button projectId={post.id} className="text-sm mt-2" />
+            </article>
+          )
+        })}
       </div>
     </section>
   )
