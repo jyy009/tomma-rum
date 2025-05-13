@@ -13,7 +13,7 @@ function Home() {
           <img
             src={kartaImage}
             alt="Karta över Sverige"
-            className="w-[70%] h-full object-cover "
+            className="w-full h-full object-cover scale-75 "
           />
           <div className="absolute inset-0 flex items-start justify-center">
             <div className="w-full md:w-1/2 space-y-6">
@@ -81,7 +81,7 @@ function Home() {
     <img 
       src="https://placehold.co/600x400" 
       alt="Forsa industrihistorisk bild" 
-      className="w-full rounded-lg object-cover"
+      className="w-full object-cover"
     />
   </div>
 
