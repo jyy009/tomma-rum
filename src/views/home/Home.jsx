@@ -1,5 +1,4 @@
 import React from "react"
-import "./Home.css"
 import Nyheter from "./components/Nyheter"
 import kartaImage from "../../assets/karta.png"
 
@@ -9,11 +8,11 @@ function Home() {
       {/* Image + Text Row */}
       <div className="flex flex-col md:flex-row max-w-7xl mx-auto p-6 gap-8">
         {/* Left Side - Background Image with Overlay Text */}
-        <div className="relative w-full md:w-1/2 h-96 md:h-auto">
+        <div className="relative flex items-start justify-center w-full md:w-1/2 h-96 md:h-auto">
           <img
             src={kartaImage}
             alt="Karta över Sverige"
-            className="w-full h-full object-cover scale-75 "
+            className="w-full h-full object-contain scale-80"
           />
           <div className="absolute inset-0 flex items-start justify-center">
             <div className="w-full md:w-1/2 space-y-6">
@@ -78,13 +77,12 @@ function Home() {
             </p>
           </div>
           <div>
-    <img 
-      src="https://placehold.co/600x400" 
-      alt="Forsa industrihistorisk bild" 
-      className="w-full object-cover"
-    />
-  </div>
-
+            <img
+              src="https://placehold.co/600x400"
+              alt="Forsa industrihistorisk bild"
+              className="w-full object-cover"
+            />
+          </div>
         </div>
       </div>
 
