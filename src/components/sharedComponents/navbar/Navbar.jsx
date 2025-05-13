@@ -46,7 +46,7 @@ function Navbar() {
           </Link>
           
           <Link
-            to="/booking"
+            to="https://bokning.tommarum.se/"
             className={location.pathname === '/booking' ?  'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
           >
             Anmälan
