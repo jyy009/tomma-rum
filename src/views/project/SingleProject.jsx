@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { getArtProjectById } from "../../services/api"
+import { getArtProjectsByYear } from "../../services/api"
+import BlogPost from "./BlogPost"
 import he from "he"
 
 function extractParagraphText(html) {
@@ -21,50 +22,46 @@ const extractAllImages = (html) => {
 }
 
 function SingleProject() {
-  const { id } = useParams()
-  const [project, setProject] = useState(null)
+  const { year } = useParams()
+  const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    getArtProjectById(id)
-      .then((data) => {
-        setProject(data)
+    setIsLoading(true)
+    getArtProjectsByYear(year)
+      .then(({ data }) => {
+        setPosts(data)
         setIsLoading(false)
       })
       .catch((error) => {
         console.error("API Error:", error)
         setIsLoading(false)
       })
-  }, [id])
-
-  if (isLoading) return <div>Loading...</div>
-  if (!project) return <div>Project not found.</div>
+  }, [year])
 
   return (
-    <section className="p-4 md:p-16">
-      <article className="py-4">
-        <p>{project.date?.slice(0, 10)}</p>
-        <h3 className="text-4xl">{he.decode(project.title?.rendered)}</h3>
+    <section className="p-4 md:p-16 min-h-[70vh]">
+      {isLoading ? (
         <div>
-          {extractParagraphText(project.content?.rendered).map((text, idx) => (
-            <p key={idx} className="max-w-60ch py-4">
-              {text}
-            </p>
-          ))}
+          <div className="h-20 w-2xl bg-gray-200 animate-pulse mb-8 rounded"></div>
+          <div className="h-60 w-2xl bg-gray-200 animate-pulse mb-8 rounded"></div>
         </div>
-        {extractAllImages(project.content?.rendered).length > 0 && (
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
-            {extractAllImages(project.content?.rendered).map((url, idx) => (
-              <img
-                key={idx}
-                src={url}
-                alt={project.title?.rendered || `Project image ${idx + 1}`}
-                className="w-full h-auto object-cover"
-              />
-            ))}
-          </div>
-        )}
-      </article>
+      ) : posts.length === 0 ? (
+        <div>No posts found for {year}.</div>
+      ) : (
+        <>
+          <h2 className="text-7xl mb-6">{year}</h2>
+          {posts.map((post) => (
+            <BlogPost
+              key={post.id}
+              date={post.date}
+              title={he.decode(post.title?.rendered)}
+              paragraphs={extractParagraphText(post.content?.rendered)}
+              imageUrls={extractAllImages(post.content?.rendered)}
+            />
+          ))}
+        </>
+      )}
     </section>
   )
 }
