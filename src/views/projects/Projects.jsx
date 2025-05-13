@@ -3,11 +3,14 @@ import { useEffect, useState } from "react"
 import { getArtProjects } from "../../services/api"
 import { MdOutlineHomeWork } from "react-icons/md"
 import Project from "../../components/sharedComponents/project/project"
+import { useSearchParams } from "react-router"
 
 function Projects() {
   const [projects, setProjects] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [page, setPage] = useState(1)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const initialPage = Number(searchParams.get("page")) || 1
+  const [page, setPage] = useState(initialPage)
   const [totalPages, setTotalPages] = useState(1)
   const pageSize = 20
 
@@ -25,9 +28,9 @@ function Projects() {
   }, [page, pageSize])
 
   useEffect(() => {
-    console.log("projects data:", projects)
-  }, [projects])
-
+    setSearchParams({ page })
+  }, [page, setSearchParams])
+  
   return (
     <div>
       {isLoading ? (
