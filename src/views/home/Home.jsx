@@ -78,7 +78,7 @@ function Home() {
           </div>
           <div>
             <img
-              src="https://placehold.co/600x400"
+              src="https://tommarum.se/wp-content/uploads/2025/04/forsa.png"
               alt="Forsa industrihistorisk bild"
               className="w-full object-cover"
             />
