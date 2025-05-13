@@ -1,8 +1,8 @@
-import React from "react";
-import Button from "../button/Button";
+import React from "react"
+import Button from "../button/Button"
 
 function Project({ title, date, imageUrl, year }) {
-  const formatDate = (date) => date?.slice(0, 10) || "";
+  const formatDate = (date) => date?.slice(0, 10) || ""
 
   return (
     <section>
@@ -21,16 +21,13 @@ function Project({ title, date, imageUrl, year }) {
         )}
 
         <div className="flex flex-col items-center 2xl:mb-0 2xl:gap-4">
-          <h2 className="text-4xl font-bold">
-            {title.rendered}
-          </h2>
+          <h2 className="text-4xl font-bold">{title.rendered}</h2>
           <p className="text-xl font-normal mb-4">{formatDate(date)}</p>
           <Button className="w-[160px] h-[39px] text-base" year={year} />
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Project;
-
+export default Project
