@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { getLatestNewsPosts } from "../../../services/api"
 import { Link } from "react-router-dom"
+import Button from "../../../components/sharedComponents/button/Button"
 
 function extractParagraphText(html) {
   if (!html) return []
@@ -11,6 +12,15 @@ function extractParagraphText(html) {
     .map((p) => p.textContent.trim())
     .filter(Boolean)
 }
+
+function extractFirstImage(html) {
+    if (!html) return null;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const img = doc.querySelector("img"); // Get the first <img> tag
+    return img?.getAttribute("src") || null;
+  }
+  
 
 function Nyheter() {
   const [posts, setPosts] = useState([])
@@ -54,41 +64,47 @@ function Nyheter() {
       <h2 className="text-4xl mb-12">Nyheter</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {posts.map((post) => {
-          const firstParagraph =
-            extractParagraphText(post.content?.rendered)[0] || ""
-          const featuredImage = post._embedded?.["wp:featuredmedia"]?.[0]
-          const date = post.date
-            ? new Date(post.date).toLocaleDateString("sv-SE")
-            : ""
+      {posts.map((post) => {
 
-          return (
-            <article key={post.id} className="py-4">
-              {date && <p className="mb-2">{date}</p>}
-              <h3 className="text-2xl mb-4">{post.title?.rendered}</h3>
-              {firstParagraph && (
-                <p className="mb-4 max-w-60ch">
-                  {firstParagraph.substring(0, 150)}...
-                </p>
-              )}
-              {featuredImage && (
-                <div className="grid grid-cols-1 gap-2">
-                  <img
-                    src={featuredImage.source_url}
-                    alt={featuredImage.alt_text || post.title?.rendered}
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
-              )}
-              <Link
-                to={`/projects/${post.id}`}
-                className="inline-block mt-4 text-sm underline"
-              >
-                Läs mer
-              </Link>
-            </article>
-          )
-        })}
+  const firstParagraph = extractParagraphText(post.content?.rendered)[0] || "";
+  const firstImage = extractFirstImage(post.content?.rendered); // ✅ new
+  const date = post.date
+    ? new Date(post.date).toLocaleDateString("sv-SE")
+    : "";
+
+  return (
+    <article key={post.id} className="py-4 flex flex-col h-full">
+  {firstImage && (
+    <div className="mb-4">
+      <img
+        src={firstImage}
+        alt={post.title?.rendered}
+        className="w-full h-48 object-cover rounded"
+      />
+    </div>
+  )}
+
+  <h3 className="text-2xl font-medium text-black mb-2">
+    {post.title?.rendered}
+  </h3>
+
+  {date && (
+    <p className="text-black text-base font-medium mb-2">
+      {date}
+    </p>
+  )}
+
+  {firstParagraph && (
+    <p className="text-black text-base font-medium mb-4 max-w-60ch">
+      {firstParagraph.substring(0, 150)}...
+    </p>
+  )}
+
+  <Button projectId={post.id} className="text-sm" />
+</article>
+
+  )
+})}
       </div>
     </section>
   )
