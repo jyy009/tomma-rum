@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { getLatestNewsPosts } from "../../../services/api"
-import { Link } from "react-router-dom"
 import Button from "../../../components/sharedComponents/button/Button"
 
 function extractParagraphText(html) {
@@ -17,9 +16,11 @@ function extractFirstImage(html) {
   if (!html) return null
   const parser = new DOMParser()
   const doc = parser.parseFromString(html, "text/html")
-  const img = doc.querySelector("img") // Get the first <img> tag
+  const img = doc.querySelector("img")
   return img?.getAttribute("src") || null
 }
+
+const formatDate = (date) => date?.slice(0, 4) || ""
 
 function Nyheter() {
   const [posts, setPosts] = useState([])
@@ -93,12 +94,12 @@ function Nyheter() {
               )}
 
               {firstParagraph && (
-                <p className="text-black text-base font-medium mb-4 max-w-60ch">
+                <p className="text-black text-base font-medium mb-4 max-w-60ch h-[100px]">
                   {firstParagraph.substring(0, 150)}...
                 </p>
               )}
 
-              <Button projectId={post.id} className="text-sm mt-2" />
+              <Button year={formatDate(post.date)} className="text-sm mt-2" />
             </article>
           )
         })}
