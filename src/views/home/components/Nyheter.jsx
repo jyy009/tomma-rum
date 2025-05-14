@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { getLatestNewsPosts } from "../../../services/api"
-import { Link } from "react-router-dom"
 import Button from "../../../components/sharedComponents/button/Button"
 
 function extractParagraphText(html) {
