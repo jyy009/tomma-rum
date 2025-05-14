@@ -12,7 +12,7 @@ function Home() {
           <img
             src={kartaImage}
             alt="Karta över Sverige"
-            className="w-full h-full object-contain scale-80"
+            className="w-full h-full md:w-[401px] md:h-[885px] object-contain"
           />
           <div className="absolute inset-0 flex items-start justify-center ">
             <div className="w-full space-y-6">
