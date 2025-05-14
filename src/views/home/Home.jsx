@@ -86,7 +86,6 @@ function Home() {
         </div>
       </div>
 
-      {/* Nyheter Section - will automatically appear below */}
       <div className="max-w-7xl mx-auto px-6">
         <Nyheter />
       </div>
