@@ -103,7 +103,8 @@ function Projects() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 p-4 gap-6 md:grid-cols-2 md:p-6 md:gap-6 lg:grid-cols-3 lg:p-10">
+      <div className="grid grid-cols-1 p-4 gap-6 md:grid-cols-2 md:p-6 md:gap-6 lg:grid-cols-3 lg:p-10 2xl:mx-16 2xl:mt-16 mb-8 md:mb-16">
+
         {categories.map((category) => (
           <div
             key={category.id}
