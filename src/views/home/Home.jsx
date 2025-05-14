@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="space-y-12">
       {/* Image + Text Row */}
-      <div className="flex flex-col md:flex-row xl:max-w-7xl mx-auto p-6 gap-8">
+      <div className="flex flex-col md:flex-row xl:max-w-7xl mx-auto p-6 gap-8 md:items-start">
         {/* Left Side - Background Image with Overlay Text */}
         <div className="relative flex items-start justify-center w-full md:w-1/2 h-96 md:h-auto">
           <img
