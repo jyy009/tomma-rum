@@ -62,3 +62,16 @@ export async function getArtProjectById(id) {
     throw error
   }
 }
+
+export async function getLatestNewsPosts(perPage = 3) {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/posts?per_page=${perPage}&_embed=wp:featuredmedia`
+    );
+    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    return await res.json();
+  } catch (error) {
+    console.error("Posts Fetch Error:", error);
+    throw error;
+  }
+}
