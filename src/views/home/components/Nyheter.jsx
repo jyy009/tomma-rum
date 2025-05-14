@@ -20,6 +20,8 @@ function extractFirstImage(html) {
   return img?.getAttribute("src") || null
 }
 
+const formatDate = (date) => date?.slice(0, 4) || ""
+
 function Nyheter() {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -97,7 +99,7 @@ function Nyheter() {
                 </p>
               )}
 
-              <Button projectId={post.id} className="text-sm mt-2" />
+              <Button year={formatDate(post.date)} className="text-sm mt-2" />
             </article>
           )
         })}
