@@ -1,60 +1,102 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { MdOutlineHomeWork } from 'react-icons/md';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import React, { useState } from "react"
+import { Link, useLocation } from "react-router-dom"
+import { FaBars, FaTimes } from "react-icons/fa"
+import logo from "../../../assets/tommarum-logo_TR-BLACK.png"
 
 function Navbar() {
-  const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);       
+  const location = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <nav className="open-sans-body flex justify-between items-center px-6 lg:px-12 bg-[#E2D4A6]">
-      <div className="text-black flex text-5xl lg:text-6xl">
-        <MdOutlineHomeWork className="text-stone-800"/>
-        <h1 className='text-2xl mt-3 ml-2'>TOMMA ROM</h1>
+    <nav className="md:flex md:justify-between bg-[var(--color-accent)] px-6 lg:px-12 py-4 border-b-2 border-black">
+      <div className="flex justify-between items-center">
+        <div className="w-50 h-12">
+          <img src={logo} alt="tommarum" />
+        </div>
+        <button
+          className="text-black text-3xl md:hidden"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
-      <button
-        className="text-black text-3xl md:hidden"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </button>
-      <div
-        className={`absolute md:static top-16 left-0 w-full md:w-auto bg-transparent md:bg-transparent py-4 md:py-0 transition-all duration-300 ${
-          menuOpen ? 'block' : 'hidden md:flex'
-        }`}
-      >
-        <ul className="flex flex-col md:flex-row md:items-center md:space-x-15 text-lg text-center text-black">
+      {menuOpen && (
+        <div className="flex flex-col mt-4 space-y-4 md:hidden text-lg text-black">
           <Link
             to="/"
-            className={location.pathname === '/' ? 'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
-
+            className={`text-center w-full ${
+              location.pathname === "/"
+                ? "border-b-2 border-black pb-1"
+                : "pb-1"
+            }`}
+            onClick={() => setMenuOpen(false)}
           >
             Hem
           </Link>
           <Link
             to="/about"
-            className={location.pathname === '/about' ? 'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
+            className={`text-center w-full ${
+              location.pathname === "/about"
+                ? "border-b-2 border-black pb-1"
+                : "pb-1"
+            }`}
+            onClick={() => setMenuOpen(false)}
           >
             Om oss
           </Link>
           <Link
             to="/projects"
-            className={location.pathname === '/projects' ?  'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
+            className={`text-center w-full ${
+              location.pathname === "/projects"
+                ? "border-b-2 border-black pb-1"
+                : "pb-1"
+            }`}
+            onClick={() => setMenuOpen(false)}
           >
             Projekt
           </Link>
-          
-          <Link
-            to="https://bokning.tommarum.se/"
-            className={location.pathname === '/booking' ?  'border-b-3 border-black pb-1' : 'border-b-3 border-transparent pb-1'}
+          <a
+            href="https://bokning.tommarum.se"
+            className="pb-1 text-center w-full"
           >
             Anmälan
-          </Link>
-        </ul>
+          </a>
+        </div>
+      )}
+      <div className="hidden md:flex space-x-10 mt-4 text-lg text-black">
+        <Link
+          to="/"
+          className={
+            location.pathname === "/" ? "border-b-2 border-black pb-1" : "pb-1"
+          }
+        >
+          Hem
+        </Link>
+        <Link
+          to="/about"
+          className={
+            location.pathname === "/about"
+              ? "border-b-2 border-black pb-1"
+              : "pb-1"
+          }
+        >
+          Om oss
+        </Link>
+        <Link
+          to="/projects"
+          className={
+            location.pathname === "/projects"
+              ? "border-b-2 border-black pb-1"
+              : "pb-1"
+          }
+        >
+          Projekt
+        </Link>
+        <a href="https://bokning.tommarum.se" className="pb-1">
+          Anmälan
+        </a>
       </div>
     </nav>
-  );
+  )
 }
-
 export default Navbar

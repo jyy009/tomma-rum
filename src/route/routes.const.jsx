@@ -17,7 +17,7 @@ export const routes=[
     element: <Layout><Projects/></Layout>,
 },
 {
-    path : "/projects/:id",
+    path : "/projects/:year",
     element: <Layout><SingleProject/></Layout>,
 },
 {
