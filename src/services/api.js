@@ -48,21 +48,6 @@ export async function getArtProjectsByYear(year, page = 1, pageSize = 20) {
   return { data }
 }
 
-export async function getArtProjectById(id) {
-  try {
-    const res = await fetch(`${BASE_URL}/posts/${id}`)
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`)
-    }
-
-    return await res.json()
-  } catch (error) {
-    console.error("Fetch Error:", error.message || error)
-    throw error
-  }
-}
-
 export async function getLatestNewsPosts(perPage = 3) {
   try {
     const res = await fetch(
