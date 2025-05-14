@@ -6,16 +6,16 @@ function Project({ title, date, imageUrl, year }) {
 
   return (
     <section>
-      <div className="flex flex-col gap-7 2xl:gap-8">
+      <div className="flex flex-col gap-4 2xl:gap-8 h-full items-center">
         {imageUrl ? (
           <img
             src={imageUrl}
             alt={title.rendered}
             loading="lazy"
-            className="w-[407px] h-[282px] 2xl:w-[443px] 2xl:h-[308px] object-cover"
+            className="w-full aspect-[4/3] object-cover"
           />
         ) : (
-          <div className="w-[407px] h-[282px] 2xl:w-[443px] 2xl:h-[308px] flex items-center justify-center bg-[var(--color-accent)]">
+          <div className="w-full aspect-[4/3] flex items-center justify-center bg-[var(--color-accent)]">
             <span>Loading image...</span>
           </div>
         )}

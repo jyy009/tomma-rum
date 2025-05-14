@@ -103,7 +103,7 @@ function Projects() {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center items-center mt-5 mx-4 gap-10 md:gap-15 md:mx-35 2xl:gap-0 2xl:gap-x-7 2xl:gap-y-16 2xl:mx-16 2xl:mt-16 ">
+      <div className="grid grid-cols-1 p-4 gap-6 md:grid-cols-2 md:p-6 md:gap-6 lg:grid-cols-3 lg:p-10">
         {categories.map((category) => (
           <div
             key={category.id}
