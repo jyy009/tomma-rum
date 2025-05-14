@@ -80,7 +80,7 @@ function Nyheter() {
                   <img
                     src={firstImage}
                     alt={post.title?.rendered}
-                    className="w-full h-60 object-cover"
+                    className="w-full aspect-[4/3] object-cover"
                   />
                 </div>
               )}
