@@ -80,7 +80,7 @@ function Home() {
             <img
               src="https://tommarum.se/wp-content/uploads/2025/04/forsa.png"
               alt="Forsa industrihistorisk bild"
-              className="w-full object-cover"
+              className="w-[70%] object-cover"
             />
           </div>
         </div>

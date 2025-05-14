@@ -3,7 +3,6 @@ import { getLatestNewsPosts } from "../../../services/api"
 import { Link } from "react-router-dom"
 import Button from "../../../components/sharedComponents/button/Button"
 
-
 function extractParagraphText(html) {
   if (!html) return []
   const parser = new DOMParser()
@@ -37,7 +36,7 @@ function Nyheter() {
 
   if (isLoading)
     return (
-        <section className="">
+      <section className="">
         <h1 className="text-4xl md:text-5xl font-bold">Nyheter</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[...Array(3)].map((_, i) => (
@@ -60,7 +59,7 @@ function Nyheter() {
     )
 
   return (
-<section className="">
+    <section className="">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map((post) => {
           const firstParagraph =
@@ -85,7 +84,7 @@ function Nyheter() {
                 </div>
               )}
 
-              <h3 className="text-2xl font-medium text-black mb-2">
+              <h3 className="text-2xl font-medium text-black mb-2 truncate w-full whitespace-nowrap overflow-hidden">
                 {post.title?.rendered}
               </h3>
 
