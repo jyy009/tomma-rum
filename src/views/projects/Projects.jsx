@@ -39,6 +39,14 @@ function Projects() {
     initialCategories.length === 0
   )
 
+  function getFirstImageFromPosts(posts) {
+    for (const post of posts) {
+      const imageUrl = getFirstImageFromPostContent(post.content?.rendered)
+      if (imageUrl) return imageUrl
+    }
+    return null
+  }
+
   useEffect(() => {
     if (categories.length > 0) return
 
@@ -67,9 +75,7 @@ function Projects() {
       } else {
         getArtProjectsByYear(year, 1, 10)
           .then(({ data }) => {
-            const imageUrl = getFirstImageFromPostContent(
-              data?.[0]?.content?.rendered
-            )
+            const imageUrl = getFirstImageFromPosts(data)
             if (imageUrl) {
               localStorage.setItem(`categoryImage_${year}`, imageUrl)
             }
@@ -104,7 +110,6 @@ function Projects() {
   return (
     <div>
       <div className="grid grid-cols-1 p-4 gap-6 md:grid-cols-2 md:p-6 md:gap-6 lg:grid-cols-3 lg:p-10 2xl:mx-16 2xl:mt-16 mb-8 md:mb-16">
-
         {categories.map((category) => (
           <div
             key={category.id}
@@ -118,6 +123,7 @@ function Projects() {
               id={category.id}
               year={category.description}
               imageUrl={categoryImages[category.description]}
+              logo={logoLoader}
             />
           </div>
         ))}

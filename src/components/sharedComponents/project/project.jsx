@@ -1,22 +1,32 @@
 import React from "react"
 import Button from "../button/Button"
 
-function Project({ title, date, imageUrl, year }) {
+function Project({ title, date, imageUrl, year, logo }) {
   const formatDate = (date) => date?.slice(0, 10) || ""
+
+  const yearsWithLogo = ["2010", "2003"]
+  const [imgError, setImgError] = React.useState(false)
+  const shouldShowLogo = yearsWithLogo.includes(year) || imgError
 
   return (
     <section>
       <div className="flex flex-col gap-4 2xl:gap-8 h-full items-center">
-        {imageUrl ? (
+        {imageUrl && !shouldShowLogo ? (
           <img
             src={imageUrl}
             alt={title.rendered}
             loading="lazy"
             className="w-full aspect-[4/3] object-cover"
+            onError={() => setImgError(true)}
           />
         ) : (
           <div className="w-full aspect-[4/3] flex items-center justify-center bg-[var(--color-accent)]">
-            <span>Loading image...</span>
+            <img
+              src={logo}
+              alt="Tommarum Logo"
+              className="max-h-full max-w-full object-contain"
+              style={{ maxHeight: "70%", maxWidth: "70%" }}
+            />
           </div>
         )}
 

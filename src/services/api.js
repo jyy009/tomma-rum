@@ -37,8 +37,8 @@ export async function getCategories() {
   return allCategories
 }
 
-export async function getArtProjectsByYear(year, page = 1, pageSize = 20) {
-  let url = `${BASE_URL}/posts?after=${year}-01-01T00:00:00&before=${year}-12-31T23:59:59&page=${page}&per_page=${pageSize}`
+export async function getArtProjectsByYear(year) {
+  let url = `${BASE_URL}/posts?after=${year}-01-01T00:00:00&before=${year}-12-31T23:59:59&per_page=100`
 
   const res = await fetch(url)
   if (!res.ok) {
