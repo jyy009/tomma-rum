@@ -7,7 +7,7 @@ function About() {
         Vad är tomma rum?
       </h1>
       <div className="sm:flex justify-between ">
-        <div className="sm:w-1/2 mb-[15px]">
+        <div className="max-w-60ch mb-[15px] text-[1.125rem]">
           <p>
             Tomma Rum är en självorganiserad plattform för kulturellt och
             konstnärligt utbyte. Varje sommar arrangerar alla deltagare
@@ -87,6 +87,7 @@ function About() {
           <div className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] bg-stone-400 mb-[10px]"></div>
           <div className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] bg-stone-400 mb-[10px]"></div>
           <div className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] bg-stone-400 mb-[10px]"></div>
+          <img src="" alt="" />
         </aside>
       </div>
     </main>
