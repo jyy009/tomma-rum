@@ -7,7 +7,7 @@ function About() {
         Vad är tomma rum?
       </h1>
       <div className="sm:flex justify-between ">
-        <div className="sm:w-1/2 mb-[15px]">
+        <div className="max-w-60ch mb-[15px] text-[1.125rem]">
           <p>
             Tomma Rum är en självorganiserad plattform för kulturellt och
             konstnärligt utbyte. Varje sommar arrangerar alla deltagare
@@ -84,9 +84,22 @@ function About() {
           </p>
         </div>
         <aside className=" flex flex-col items-center">
-          <div className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] bg-stone-400 mb-[10px]"></div>
-          <div className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] bg-stone-400 mb-[10px]"></div>
-          <div className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] bg-stone-400 mb-[10px]"></div>
+          {" "}
+          <img
+            src="https://tommarum.se/wp-content/uploads/2025/04/forsa.png"
+            alt="a picture of a red industrial building"
+            className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] mb-[10px]"
+          />
+          <img
+            src="https://tommarum.se/wp-content/uploads/2021/08/voxfjarden.png"
+            alt="a colorful painting of a landscape depicting a river"
+            className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] mb-[10px]"
+          />
+          <img
+            src="https://tommarum.se/wp-content/uploads/2015/08/wpid-wp-1438869280528.jpeg"
+            alt="a picture of a group of people working together on an art project"
+            className="w-[300px] h-[200px]  sm:w-[400px] sm:h-[300px] mb-[10px]"
+          />
         </aside>
       </div>
     </main>
