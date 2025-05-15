@@ -12,6 +12,19 @@ function extractParagraphText(html) {
   return Array.from(paragraphs)
     .map((p) => p.textContent.trim())
     .filter(Boolean)
+    .filter((text) => {
+      if (
+        text.startsWith("#gallery") ||
+        text.startsWith(".") ||
+        text.includes("{") ||
+        text.includes("}") ||
+        text.includes("gallery_shortcode") ||
+        text.match(/^[\s\S]*\{[\s\S]*\}[\s\S]*$/)
+      ) {
+        return false
+      }
+      return true
+    })
 }
 
 const extractAllImages = (html) => {
