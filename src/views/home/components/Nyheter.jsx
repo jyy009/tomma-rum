@@ -85,7 +85,7 @@ function Nyheter() {
                 </div>
               )}
 
-              <h3 className="text-2xl font-medium text-black mb-2 truncate w-full whitespace-nowrap overflow-hidden">
+              <h3 className="text-4xl font-bold text-black mb-2 truncate w-full whitespace-nowrap overflow-hidden">
                 {post.title?.rendered}
               </h3>
 
