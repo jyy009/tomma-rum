@@ -4,9 +4,9 @@ import kartaImage from "../../assets/karta.png"
 
 function Home() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 mb-10">
       {/* Image + Text Row */}
-      <div className="flex flex-col md:flex-row xl:max-w-7xl mx-auto p-6 gap-8 md:items-start">
+      <div className="flex flex-col mx-6 my-6 mb-10 md:flex-row md:mx-12 md:my-10 md:mb-14 gap-10 md:items-start lg:mx-20 lg:gap-16">
         {/* Left Side - Background Image with Overlay Text */}
         <div className="relative flex items-start justify-center w-full md:w-1/2 h-96 md:h-auto">
           <img
@@ -17,7 +17,7 @@ function Home() {
           <div className="absolute inset-0 flex items-start justify-center ">
             <div className="w-full space-y-6">
               <h4 className="text-3xl md:max-lg:text-[49px] lg:text-6xl font-bold leading-tight">
-                <div className="flex flex-col">
+                <div className="flex flex-col mt-6">
                   <div className="self-start">Tomma Rum</div>
                   <div className="self-center ml-8">är en</div>
                   <div className="self-end">självorganiserad</div>
@@ -40,7 +40,7 @@ function Home() {
             {/* Header */}
             <h2 className="text-4xl md:text-5xl font-bold">Forsa 2025</h2>
 
-            <p className="leading-relaxed text-lg">
+            <p className="leading-relaxed max-w-60ch">
               <span className="block">
                 Forsa, här kommer vi! Beläget i de blå bergens och folkmusikens
                 landskap Hälsingland, närmare bestämt i Hudiksvalls kommun,
@@ -59,8 +59,8 @@ function Home() {
             </p>
           </div>
 
-          <div className="space-y-4">
-            <p className="leading-relaxed text-lg">
+          <div>
+            <p className="leading-relaxed max-w-60ch">
               <span className="block">
                 Vi har tillgång till en av de enormt rymliga byggnaderna. Där
                 finns ett enklare kök och badrum. Vi kommer i år vara tio
@@ -85,6 +85,8 @@ function Home() {
           </div>
         </div>
       </div>
+
+      <hr className="border-none h-[2px] bg-[var(--color-accent)]"/>
 
       <div className="max-w-7xl mx-auto px-6">
         <Nyheter />
