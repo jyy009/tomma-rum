@@ -1,12 +1,12 @@
-import React from "react";
-import RouteApp from "./route/RouteApp.jsx";
+import React from "react"
+import RouteApp from "./route/RouteApp.jsx"
 
 function App() {
   return (
     <>
       <RouteApp />
     </>
-  );
+  )
 }
 
-export default App;
+export default App

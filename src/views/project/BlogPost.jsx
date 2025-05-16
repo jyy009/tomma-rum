@@ -41,7 +41,9 @@ function BlogPost({ date, title, paragraphs, imageUrls }) {
       <h3 className="text-4xl">{title}</h3>
       <div>
         {paragraphs.map((text, idx) => (
-          <p key={idx} className="max-w-60ch py-2">{linkify(text)}</p>
+          <p key={idx} className="max-w-60ch py-2">
+            {linkify(text)}
+          </p>
         ))}
       </div>
       {imageUrls.length > 0 && (

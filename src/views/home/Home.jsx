@@ -86,7 +86,7 @@ function Home() {
         </div>
       </div>
 
-      <hr className="border-none h-[2px] bg-[var(--color-accent)]"/>
+      <hr className="border-none h-[2px] bg-[var(--color-accent)]" />
 
       <div className="max-w-7xl mx-auto px-6">
         <Nyheter />
