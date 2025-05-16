@@ -4,7 +4,6 @@ const Projects = lazy(() => import('../views/projects/Projects.jsx'));
 const SingleProject = lazy(() => import('../views/project/SingleProject.jsx'));
 const Layout = lazy(() => import('../components/sharedComponents/layout/Layout.jsx'));
 const About = lazy(() => import('../views/about/About.jsx'));
-const Booking = lazy(() => import('../views/booking/Booking.jsx'));
 const PageNotFound = lazy(() => import('../views/pagenotfound/PageNotFound.jsx'))
 
 export const routes=[
@@ -23,10 +22,6 @@ export const routes=[
 {
     path : "/about",
     element: <Layout><About/></Layout>,
-},
-{
-    path : "/booking",
-    element: <Layout><Booking/></Layout>,
 },
 {
     path : "*",
