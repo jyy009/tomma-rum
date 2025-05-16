@@ -10,9 +10,9 @@ function Navbar() {
   return (
     <nav className="md:flex md:justify-between bg-[var(--color-accent)] px-6 lg:px-12 py-4 border-b-2 border-black">
       <div className="flex justify-between items-center">
-        <div className="w-50 h-12">
-          <img src={logo} alt="tommarum" />
-        </div>
+        <Link to="/" className="w-50 h-12">
+          <img src={logo} alt="tomma rum logo" />
+        </Link>
         <button
           className="text-black text-3xl md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
