@@ -3,7 +3,7 @@
 
 @theme {
   --color-background: #fffdf7;
-  --color-accent: #EBD899;
+  --color-accent: #ebd899;
   --font-headers: "Darker Grotesque", sans-serif;
 }
 
@@ -43,9 +43,3 @@ h3 {
   font-family: var(--font-headers);
 }
 
-.aspect-\[407\/282\] iframe {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-  border: 0;
-}
